@@ -21,13 +21,13 @@ class App extends Component{
     }
 
     handleSubmit = async (searchTerm) => {
-        const response = await youtube.get('search', { params: {
+        const response = await youtube.get('/search', { params: {
             part:'snippet',
             maxResults: 5,
             key: process.env.API_KEY,
+            type: "video",
             q: searchTerm
         }})
-    
         this.setState({ videos: response.data.items, selectedVideo: response.data.items[0] })
 
     }
